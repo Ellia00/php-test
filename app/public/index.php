@@ -18,10 +18,11 @@ $title = " En webbsida med php";
 <h1>
 <?php
     echo "Hello World";
+    echo"<br>";
  ?>
-
-
 </h1>
+
+<a href="learn">Hello World</a>
 
 
 </body>

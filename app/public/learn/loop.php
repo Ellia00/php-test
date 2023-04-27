@@ -102,4 +102,6 @@ foreach ($numbers as $key => $value) {
 echo $total;
 
 
+
+
 ?>

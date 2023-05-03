@@ -229,6 +229,7 @@ $title = "Funktioner - Functions";
         <button type="reset"><?= $languages[$language2]["reset"] ?></button>
         <button><?= $languages[$language2]["save"] ?></button>
     </form>
+    
 
     <?php
     include "_includes/footer.php";

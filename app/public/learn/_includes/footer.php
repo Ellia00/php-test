@@ -1,4 +1,8 @@
+
+
 <footer>
 <hr>
-En sidfot
+En sidfossing <br>
+
+<?=copyright();?>
 </footer>

@@ -11,19 +11,28 @@ $bird_name = "";
 
 // hantera POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    echo "<br>Birb was posted";
+    echo "post was sent";
     // global array $POST innehåller olika fält som finns i formuläret
     print_r2($_POST);
 
     $bird_name = trim($_POST['bird_name']);
-    // spara till databasen
 
-    $sql = "INSERT INTO bird (bird_name) VALUES ('$bird_name') ";
-    print_r2($sql);
+    // kontrollera att minst 2 tecken finns i fältet för bird_name
 
-    // använd databaskopplingen för att spara till tabellen i databasen
-    $result = $pdo->exec($sql);
+    if (strlen($bird_name) >= 2) {
+
+        // spara till databasen
+
+        $sql = "INSERT INTO bird (bird_name) VALUES ('$bird_name') ";
+        print_r2($sql);
+
+        // använd databaskopplingen för att spara till tabellen i databasen
+        $result = $pdo->exec($sql);
+        echo "<br>Birb was posted";
+    }
+
 }
+
 
 // visa eventuella fåglar som finns i tabellen
 $sql = "SELECT * FROM bird";
@@ -58,7 +67,7 @@ $rows = $result->fetchAll();
 
         <p>
             <label for="bird_name">Birb:</label>
-            <input type="text" name="bird_name" id="bird_name">
+            <input type="text" name="bird_name" id="bird_name" required minlength="2" maxlength="25">
         </p>
         <p>
             <input type="submit" value="Send birb">
@@ -70,8 +79,12 @@ $rows = $result->fetchAll();
     <section>
         <?php
         foreach ($rows as $row) {
+            $id = $row['id'];
             echo "<div>";
+            echo "<a href= \"bird_edit.php?id=$id\">";
+            // echo '<a href= "bird_edit.php?id=' . $id . '">';
             echo $row['bird_name'];
+            echo "</a>";
             echo "</div>";
         }
         ?>

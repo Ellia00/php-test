@@ -1,4 +1,8 @@
 <?php
+
+// se till att sessioner används på sidan
+session_start();
+
 require_once "../_includes/database-connection.php";
 
 
@@ -57,6 +61,12 @@ require_once "../_includes/database-connection.php";
         $result = $pdo->query($sql_statement);
         $user = $result->fetch();
 
+            // När rätt lösen används är användaren känd
+            // skapa sessionsvariabler som kan användas
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['id'] = $user['id'];
+
+
         // if ok redirect to login page
         header("location : login.php");
         // }
@@ -67,7 +77,7 @@ require_once "../_includes/database-connection.php";
     }
 
     // echo $_SERVER["REQUEST_METHOD"];
-// var_dump($_POST)
+    // var_dump($_POST)
     
 
 

@@ -1,4 +1,6 @@
 <header>
 Ett sidhue...
-<hr>
+<?= isset($_SESSION['username']) ? $_SESSION['username'] : ""; ?>
+
 </header>
+<hr>

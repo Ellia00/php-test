@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+session_start();
 include "_includes/global-functions.php";
 include "_includes/database-connection.php";
 $title = "Edit birbs";

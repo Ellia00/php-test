@@ -3,6 +3,7 @@
 
 // require ger fel för mig idk why
 // require_once "../_includes/database-connection.php";
+session_start();
 $servername = "mysql";
 $database = "db_learn";
 $username = "db_user";
